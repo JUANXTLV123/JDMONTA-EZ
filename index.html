@@ -1,0 +1,1237 @@
+<!DOCTYPE html>
+<html lang="es" class="h-full">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Universo Yasmin Stefany ❤️</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;900&family=Dancing+Script:wght@600;700&family=Montserrat:wght@300;400;600;700&family=Great+Vibes&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        goldLuxury: '#D4AF37',
+                        goldLight: '#F3E5AB',
+                        deepCosmos: '#0B0B1A',
+                        nebulaRose: '#E056FD',
+                        sunsetRose: '#FF7E5F',
+                        romanticPink: '#FFD1DC',
+                        deepBerry: '#581B28'
+                    },
+                    fontFamily: {
+                        handwriting: ['"Dancing Script"', 'cursive'],
+                        script: ['"Great Vibes"', 'cursive'],
+                        luxury: ['"Cinzel"', 'serif'],
+                        sans: ['"Montserrat"', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            user-select: none;
+            -webkit-tap-highlight-color: transparent;
+            touch-action: manipulation;
+            background-color: #0b0b1a;
+            color: #ffffff;
+        }
+
+        @keyframes pulseGlow {
+            0%, 100% { filter: drop-shadow(0 0 15px rgba(224, 86, 253, 0.6)); transform: scale(1); }
+            50% { filter: drop-shadow(0 0 25px rgba(212, 175, 55, 0.9)); transform: scale(1.03); }
+        }
+
+        @keyframes floatSlow {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-8px) rotate(1.5deg); }
+        }
+
+        @keyframes spin3D {
+            0% { transform: rotateY(0deg); }
+            100% { transform: rotateY(360deg); }
+        }
+
+        .animate-glow { animation: pulseGlow 3.5s infinite ease-in-out; }
+        .animate-float { animation: floatSlow 4s ease-in-out infinite; }
+        .animate-spin-3d { animation: spin3D 8s linear infinite; transform-style: preserve-3d; }
+
+        .glass-luxury {
+            background: rgba(22, 18, 38, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(212, 175, 55, 0.35);
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.6);
+        }
+
+        .gold-gradient-text {
+            background: linear-gradient(135deg, #FFF0B0 0%, #D4AF37 50%, #996515 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        #particle-canvas, #cosmos-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .eq-bar {
+            animation: eqBounce 1.2s ease-in-out infinite alternate;
+        }
+        @keyframes eqBounce {
+            0% { height: 15%; }
+            100% { height: 95%; }
+        }
+
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #d4af37; border-radius: 10px; }
+
+        .bottom-nav {
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+        }
+    </style>
+</head>
+<body class="bg-deepCosmos min-h-screen font-sans flex flex-col justify-between overflow-x-hidden">
+
+    <canvas id="cosmos-canvas"></canvas>
+    <canvas id="particle-canvas"></canvas>
+
+    <!-- REPRODUCTOR DE AUDIO PRINCIPAL -->
+    <audio id="bg-music" preload="auto">
+        <source id="music-source" src="cancion1.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- COVER DE TARJETA RASPADITA -->
+    <div id="scratch-overlay" class="fixed inset-0 z-50 flex flex-col items-center justify-center bg-gradient-to-b from-deepCosmos via-purple-950 to-deepCosmos p-4 transition-all duration-1000">
+        <div class="mb-4 text-center animate-float">
+            <div class="w-20 h-20 mx-auto rounded-full border-2 border-goldLuxury flex items-center justify-center shadow-2xl bg-black/40 backdrop-blur-md mb-2">
+                <span class="font-luxury text-2xl font-black gold-gradient-text">Y & S</span>
+            </div>
+            <span class="inline-block bg-goldLuxury/20 text-goldLight border border-goldLuxury/40 px-4 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest">
+                Experiencia Exclusiva VIP
+            </span>
+            <h1 class="font-script text-5xl md:text-6xl font-bold text-white mt-2">Yasmin Stefany</h1>
+            <p class="font-handwriting text-xl text-pink-200 mt-1">Raspa con tu dedo para abrir tu regalo ❤️</p>
+        </div>
+
+        <div class="relative w-80 h-80 rounded-3xl overflow-hidden shadow-2xl border-2 border-goldLuxury/50 bg-black/60 backdrop-blur-xl flex flex-col items-center justify-center p-6 text-center">
+            <div class="absolute inset-0 flex flex-col items-center justify-center p-6 bg-gradient-to-b from-purple-900/90 to-black/95 text-center">
+                <img src="snoopy.png" alt="Snoopy" class="w-24 h-24 object-contain mb-2 animate-float drop-shadow-lg" onerror="this.src='https://media.giphy.com/media/K3A034TfBf2O0/giphy.gif'">
+                <h3 class="font-script text-3xl gold-gradient-text font-bold">¡Bienvenida Reina!</h3>
+                <p class="font-handwriting text-lg text-rose-100 mt-1">Accediendo a tu aplicación especial.</p>
+                <button onclick="enterApp()" class="mt-4 px-8 py-3 bg-gradient-to-r from-goldLuxury to-amber-500 text-black font-bold rounded-full shadow-2xl hover:scale-105 transition-transform text-xs uppercase tracking-wider flex items-center gap-2">
+                    <i class="fas fa-sparkles"></i>
+                    <span>Entrar a Mi Universo</span>
+                </button>
+            </div>
+            <canvas id="scratch-canvas" class="absolute inset-0 cursor-pointer touch-none z-10"></canvas>
+        </div>
+        <p class="text-xs text-goldLight/80 mt-4 flex items-center gap-2 font-medium">
+            <i class="fas fa-hand-pointer animate-bounce text-goldLuxury"></i> Desliza para raspar la pantalla
+        </p>
+    </div>
+
+    <!-- CONTENEDOR PRINCIPAL DE LA APLICACIÓN -->
+    <div id="app-wrapper" class="relative z-10 flex-1 max-w-md mx-auto w-full pb-28 pt-4 px-3 flex flex-col">
+
+        <!-- CABECERA PRINCIPAL -->
+        <header class="glass-luxury rounded-2xl p-3.5 mb-4 flex items-center justify-between shadow-lg">
+            <div class="flex items-center gap-3">
+                <div class="relative">
+                    <img src="foto3.jpg" alt="Yasmin Stefany" class="w-11 h-11 rounded-full object-cover border-2 border-goldLuxury shadow-md">
+                    <span class="absolute bottom-0 right-0 w-3.5 h-3.5 bg-emerald-400 border-2 border-black rounded-full"></span>
+                </div>
+                <div>
+                    <h2 class="font-luxury font-bold text-white text-xs tracking-wider flex items-center gap-1.5">
+                        YASMIN STEFANY <i class="fas fa-gem text-goldLuxury text-xs"></i>
+                    </h2>
+                    <p class="text-[10px] text-pink-200/70 font-medium">Edición Exclusiva • Amor Eterno</p>
+                </div>
+            </div>
+
+            <div class="w-9 h-9 rounded-xl border border-goldLuxury/50 bg-black/50 flex items-center justify-center shadow">
+                <span class="font-luxury text-xs font-black gold-gradient-text">YS</span>
+            </div>
+        </header>
+
+        <!-- REPRODUCTOR DE 14 CANCIONES -->
+        <div class="glass-luxury rounded-2xl p-4 mb-4 border border-goldLuxury/30 relative overflow-hidden shadow-xl">
+            <div class="flex items-center gap-3 mb-3">
+                <div class="relative w-14 h-14 rounded-xl border border-goldLuxury/50 shrink-0 bg-gradient-to-br from-purple-900 to-black flex items-center justify-center overflow-hidden p-1 shadow-inner">
+                    <img src="snoopy.png" alt="Snoopy Audio" class="w-full h-full object-contain" onerror="this.src='https://media.giphy.com/media/K3A034TfBf2O0/giphy.gif'">
+                </div>
+
+                <div class="flex-1 min-w-0">
+                    <div class="flex items-center justify-between">
+                        <span id="track-number" class="text-[9px] font-bold uppercase tracking-widest text-goldLuxury">Pista 1 de 14</span>
+                        <div id="eq-visualizer" class="flex items-end gap-0.5 h-3.5 opacity-60">
+                            <span class="w-1 bg-goldLuxury rounded-t eq-bar" style="animation-duration: 0.8s;"></span>
+                            <span class="w-1 bg-pink-400 rounded-t eq-bar" style="animation-duration: 1.1s;"></span>
+                            <span class="w-1 bg-purple-400 rounded-t eq-bar" style="animation-duration: 0.6s;"></span>
+                            <span class="w-1 bg-goldLight rounded-t eq-bar" style="animation-duration: 1.3s;"></span>
+                        </div>
+                    </div>
+                    <h3 id="track-title" class="font-bold text-white text-sm truncate mt-0.5">Te Prometo 🎵</h3>
+                    <p id="track-artist" class="text-[11px] text-pink-200/80 truncate">Melendi • Para Yasmin Stefany</p>
+                </div>
+            </div>
+
+            <div class="space-y-1 mb-2">
+                <label class="text-[9px] font-bold uppercase text-goldLight tracking-wider flex items-center gap-1">
+                    <i class="fas fa-music text-goldLuxury"></i> Seleccionar Canción:
+                </label>
+                <select id="song-selector" onchange="selectTrack(this.value)" class="w-full bg-black/60 border border-goldLuxury/40 rounded-xl px-3 py-1.5 text-xs text-goldLight font-semibold">
+                    <option value="0">1. Te Prometo - Melendi 🎵</option>
+                    <option value="1">2. Canción Especial 2 💕</option>
+                    <option value="2">3. Canción Especial 3 🌟</option>
+                    <option value="3">4. Canción Especial 4 ✨</option>
+                    <option value="4">5. Canción Especial 5 🌹</option>
+                    <option value="5">6. Canción Especial 6 💖</option>
+                    <option value="6">7. Canción Especial 7 🎆</option>
+                    <option value="7">8. Canción Especial 8 💎</option>
+                    <option value="8">9. Canción Especial 9 🌸</option>
+                    <option value="9">10. Canción Especial 10 👑</option>
+                    <option value="10">11. Canción Especial 11 💫</option>
+                    <option value="11">12. Canción Especial 12 🌷</option>
+                    <option value="12">13. Canción Especial 13 🦋</option>
+                    <option value="13">14. Canción Especial 14 ❤️</option>
+                </select>
+            </div>
+
+            <div class="space-y-1">
+                <input type="range" id="music-scrubber" min="0" max="100" value="0" class="w-full h-1 bg-white/20 accent-goldLuxury rounded-lg cursor-pointer">
+                <div class="flex justify-between text-[9px] text-gray-400 font-mono">
+                    <span id="music-time-curr">0:00</span>
+                    <span id="music-time-dur">0:00</span>
+                </div>
+            </div>
+
+            <div class="flex items-center justify-between mt-2 pt-2 border-t border-white/10">
+                <button onclick="prevTrack()" class="flex items-center gap-1 text-goldLight hover:text-white text-xs font-semibold bg-white/5 px-2.5 py-1 rounded-lg border border-goldLuxury/30">
+                    <i class="fas fa-step-backward"></i>
+                    <span>Anterior</span>
+                </button>
+                <div class="flex items-center gap-3">
+                    <button onclick="rewindAudio()" class="text-white text-xs hover:text-goldLuxury">
+                        <i class="fas fa-backward"></i>
+                    </button>
+                    <button onclick="toggleAudio()" id="main-play-btn" class="w-10 h-10 rounded-full bg-gradient-to-r from-goldLuxury to-amber-500 text-black flex items-center justify-center font-bold text-sm shadow-lg hover:scale-105 transition-transform">
+                        <i id="main-play-icon" class="fas fa-play ml-0.5"></i>
+                    </button>
+                    <button onclick="forwardAudio()" class="text-white text-xs hover:text-goldLuxury">
+                        <i class="fas fa-forward"></i>
+                    </button>
+                </div>
+                <button onclick="nextTrack()" class="flex items-center gap-1 text-goldLight hover:text-white text-xs font-semibold bg-white/5 px-2.5 py-1 rounded-lg border border-goldLuxury/30">
+                    <span>Siguiente</span>
+                    <i class="fas fa-step-forward"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- SECCIONES DE LA APLICACIÓN -->
+        <main class="flex-1 space-y-4">
+
+            <!-- TAB 1: UNIVERSO Y MOTIVACIÓN -->
+            <section id="tab-home" class="app-tab space-y-4">
+                <div class="relative rounded-3xl overflow-hidden glass-luxury border border-goldLuxury/40 p-6 text-center space-y-2">
+                    <div class="w-16 h-16 mx-auto rounded-full border border-goldLuxury/60 bg-gradient-to-br from-purple-900 to-black p-1 shadow-inner animate-orbit">
+                        <div class="w-full h-full rounded-full border border-pink-400/40 flex items-center justify-center text-goldLuxury text-xl">
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <h1 class="font-luxury text-2xl font-bold gold-gradient-text tracking-wider">Universo Yasmin</h1>
+                    <p class="text-xs text-pink-100/80 font-light">Toca las estrellas para descubrir frases inspiradoras.</p>
+                </div>
+
+                <div class="glass-luxury rounded-3xl p-5 border border-goldLuxury/30 relative min-h-[200px] flex flex-col justify-between">
+                    <p class="text-[10px] uppercase font-bold text-goldLuxury tracking-widest text-center">Constelación de Motivación</p>
+                    
+                    <div class="relative w-full h-40 my-2 flex items-center justify-center">
+                        <svg class="absolute inset-0 w-full h-full stroke-goldLuxury/30" stroke-width="1.5" stroke-dasharray="4">
+                            <line x1="20%" y1="30%" x2="50%" y2="20%" />
+                            <line x1="50%" y1="20%" x2="80%" y2="35%" />
+                            <line x1="50%" y1="20%" x2="50%" y2="70%" />
+                            <line x1="20%" y1="30%" x2="35%" y2="75%" />
+                            <line x1="80%" y1="35%" x2="65%" y2="80%" />
+                        </svg>
+
+                        <button onclick="revealStarQuote(0)" class="absolute top-[25%] left-[18%] w-8 h-8 rounded-full bg-goldLuxury/20 border border-goldLuxury text-goldLight flex items-center justify-center text-xs animate-glow">🌟</button>
+                        <button onclick="revealStarQuote(1)" class="absolute top-[15%] left-[47%] w-10 h-10 rounded-full bg-pink-500/20 border border-pink-400 text-pink-200 flex items-center justify-center text-sm animate-glow">✨</button>
+                        <button onclick="revealStarQuote(2)" class="absolute top-[30%] right-[17%] w-8 h-8 rounded-full bg-purple-500/20 border border-purple-400 text-purple-200 flex items-center justify-center text-xs animate-glow">⭐</button>
+                        <button onclick="revealStarQuote(3)" class="absolute bottom-[20%] left-[32%] w-9 h-9 rounded-full bg-rose-500/20 border border-rose-400 text-rose-200 flex items-center justify-center text-xs animate-glow">💫</button>
+                        <button onclick="revealStarQuote(4)" class="absolute bottom-[15%] right-[30%] w-9 h-9 rounded-full bg-amber-500/20 border border-amber-300 text-amber-200 flex items-center justify-center text-xs animate-glow">👑</button>
+                    </div>
+
+                    <div class="p-3 bg-black/60 rounded-2xl border border-goldLuxury/30 text-center">
+                        <p class="text-xs text-goldLight font-handwriting text-lg" id="star-quote-text">
+                            "Presiona cualquier estrella para cargar tus energías..."
+                        </p>
+                    </div>
+                </div>
+
+                <div class="glass-luxury rounded-3xl p-5 border border-goldLuxury/30 text-center space-y-3 relative">
+                    <img src="snoopy.png" alt="Snoopy" class="w-16 h-16 mx-auto object-contain animate-float" onerror="this.src='https://media.giphy.com/media/K3A034TfBf2O0/giphy.gif'">
+                    <h3 class="font-luxury text-sm font-bold gold-gradient-text uppercase tracking-widest">Dosis Diaria de Motivación</h3>
+                    <p id="motivational-phrase" class="font-handwriting text-2xl text-pink-100 italic px-2">
+                        "Eres más fuerte de lo que crees y capaz de lograr todo lo que te propongas, Yasmin."
+                    </p>
+                    <button onclick="generateMotivation()" class="px-6 py-2.5 bg-gradient-to-r from-goldLuxury to-amber-500 text-black font-bold text-xs rounded-full shadow-lg hover:scale-105 transition-transform uppercase tracking-wider">
+                        <i class="fas fa-magic mr-1"></i> Nueva Frase
+                    </button>
+                </div>
+
+                <!-- CÁPSULA DE RECUERDOS (FORMATO VERTICAL TIKTOK) -->
+                <div class="glass-luxury rounded-3xl p-5 border border-goldLuxury/30 space-y-3 text-center">
+                    <div class="flex items-center justify-center gap-2 text-goldLuxury">
+                        <i class="fas fa-lock text-lg" id="padlock-icon"></i>
+                        <h3 class="font-luxury text-xs font-bold uppercase tracking-widest">Cápsula de Recuerdos 🔒</h3>
+                    </div>
+                    <p class="text-[11px] text-pink-100/80">Selecciona la fecha especial para abrir tu cápsula:</p>
+
+                    <div id="lock-inputs" class="flex justify-center items-center gap-2 my-2">
+                        <select id="lock-day" class="bg-black/60 border border-goldLuxury/40 rounded-xl px-2.5 py-1.5 text-xs text-goldLight font-bold"><option value="30">30</option></select>
+                        <span class="text-goldLuxury font-bold text-xs">/</span>
+                        <select id="lock-month" class="bg-black/60 border border-goldLuxury/40 rounded-xl px-2.5 py-1.5 text-xs text-goldLight font-bold"><option value="Agosto">Agosto</option></select>
+                        <span class="text-goldLuxury font-bold text-xs">/</span>
+                        <select id="lock-year" class="bg-black/60 border border-goldLuxury/40 rounded-xl px-2.5 py-1.5 text-xs text-goldLight font-bold"><option value="2026">2026</option></select>
+                    </div>
+
+                    <button onclick="unlockMemory()" class="w-full py-2.5 bg-gradient-to-r from-goldLuxury to-amber-500 text-black font-bold text-xs rounded-xl shadow-lg hover:scale-[1.01] transition-transform uppercase tracking-wider">
+                        Abrir Cápsula Especial ✨
+                    </button>
+
+                    <div id="unlocked-memory" class="hidden text-left space-y-3 pt-3 border-t border-goldLuxury/30">
+                        <div class="p-3 bg-emerald-950/80 border border-emerald-500/40 rounded-xl text-[11px] text-emerald-200 flex items-center gap-2">
+                            <i class="fas fa-check-circle text-emerald-400 text-sm"></i>
+                            <span>¡30 de Agosto de 2026! Un momento único e inolvidable. ❤️</span>
+                        </div>
+                        <!-- CONTENEDOR ESTILO TIKTOK VERTICAL FULL (9:16) -->
+                        <div class="relative w-full max-w-[280px] mx-auto aspect-[9/16] rounded-2xl overflow-hidden border border-goldLuxury/40 shadow-2xl bg-black">
+                            <video controls class="w-full h-full object-cover">
+                                <source src="video_cometas.mp4" type="video/mp4">
+                            </video>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- TAB 2: SECCIÓN DE JUEGOS TEMÁTICOS DE BUBU Y DUDU -->
+            <section id="tab-games" class="app-tab hidden space-y-4">
+                
+                <!-- JUEGO 1: CAMINO DE BUBU HASTA DUDU -->
+                <div class="glass-luxury rounded-3xl p-5 border border-goldLuxury/30 space-y-3 text-center relative overflow-hidden">
+                    <span class="bg-pink-500/20 text-pink-200 px-3 py-1 rounded-full text-[9px] font-bold uppercase tracking-widest border border-pink-400/30">
+                        Juego 1: El Camino del Amor
+                    </span>
+                    <h3 class="font-luxury text-lg font-bold text-white">Lleva a Bubu hasta Dudu</h3>
+                    <p class="text-[11px] text-pink-200/80">Desliza el camino para que Bubu llegue hasta Dudu:</p>
+
+                    <div class="p-4 bg-black/60 rounded-2xl border border-goldLuxury/30 space-y-4">
+                        <div class="flex justify-between items-center px-2 relative">
+                            <img id="bubu-img" src="bubu.png" alt="Bubu" class="w-10 h-10 object-contain transition-all duration-300" onerror="this.src='https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExM3ZneHJsdDBycTViYW4yaHRvOHlsN3IzaDFiZWpzbmd6ODV3Mmw2ZCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWR3JmN0PWc/13fS26fB3A2tEY/giphy.gif'">
+                            <div class="flex-1 h-2 bg-gradient-to-r from-pink-500 via-purple-500 to-amber-500 mx-3 rounded-full relative overflow-hidden">
+                                <div id="path-fill" class="h-full bg-goldLuxury w-0 transition-all duration-300"></div>
+                            </div>
+                            <img id="dudu-img" src="dudu.png" alt="Dudu" class="w-10 h-10 object-contain" onerror="this.src='https://media.giphy.com/media/K3A034TfBf2O0/giphy.gif'">
+                        </div>
+
+                        <input type="range" id="bubu-path-slider" min="0" max="100" value="0" oninput="moveBubu(this.value)" class="w-full h-2 bg-white/20 accent-pink-500 rounded-lg cursor-pointer">
+
+                        <div id="bubu-dudu-reward" class="hidden space-y-2 pt-2 animate-bounce">
+                            <div class="text-4xl flex items-center justify-center gap-2">
+                                <span>👑</span> ❤️ <span>👑</span>
+                            </div>
+                            <p class="font-handwriting text-2xl gold-gradient-text font-bold">
+                                ¡Se encontraron Bubu y Dudu con sus coronitas! 💍💖
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- JUEGO 2: JUEGO DE PALABRAS SECRETA -->
+                <div class="glass-luxury rounded-3xl p-5 border border-goldLuxury/30 space-y-3 text-center">
+                    <span class="bg-purple-500/20 text-purple-200 px-3 py-1 rounded-full text-[9px] font-bold uppercase tracking-widest border border-purple-400/30">
+                        Juego 2: Juego de Palabras Secretas
+                    </span>
+                    <h3 class="font-luxury text-lg font-bold text-white">Adivina la Frase Eterna</h3>
+                    <p class="text-[11px] text-pink-200/80">Presiona las letras para descubrir la frase secreta:</p>
+
+                    <div id="word-game-board" class="flex flex-wrap justify-center gap-1.5 py-3"></div>
+
+                    <div id="word-game-keyboard" class="flex flex-wrap justify-center gap-1 max-w-xs mx-auto"></div>
+
+                    <div id="word-game-success" class="hidden p-3 bg-emerald-950/80 border border-emerald-500/50 rounded-2xl text-emerald-200 text-xs font-bold animate-bounce">
+                        🎉 ¡Siiii! "TU Y YO POR SIEMPRE" ❤️
+                    </div>
+                </div>
+
+                <!-- JUEGO 3: CONSTELACIÓN DE AMOR -->
+                <div class="glass-luxury rounded-3xl p-5 border border-goldLuxury/30 space-y-3 text-center relative">
+                    <span class="bg-amber-500/20 text-amber-300 px-3 py-1 rounded-full text-[9px] font-bold uppercase tracking-widest border border-amber-400/30">
+                        Juego 3: Constelación Mágica
+                    </span>
+                    <h3 class="font-luxury text-lg font-bold text-white">Conecta las Estrellas</h3>
+                    <p class="text-[11px] text-pink-200/80">Toca las estrellas en orden (1 ➔ 2 ➔ 3 ➔ 4 ➔ 5) para revelar la magia:</p>
+
+                    <div class="relative w-full h-48 bg-black/60 rounded-2xl border border-goldLuxury/40 flex items-center justify-center my-2 overflow-hidden">
+                        <button onclick="connectStar(1)" id="star-btn-1" class="absolute top-4 left-10 w-9 h-9 rounded-full bg-goldLuxury/30 border border-goldLuxury text-goldLight font-bold text-xs flex items-center justify-center animate-pulse">1 ⭐</button>
+                        <button onclick="connectStar(2)" id="star-btn-2" class="absolute top-4 right-10 w-9 h-9 rounded-full bg-goldLuxury/30 border border-goldLuxury text-goldLight font-bold text-xs flex items-center justify-center opacity-50">2 ⭐</button>
+                        <button onclick="connectStar(3)" id="star-btn-3" class="absolute bottom-6 right-16 w-9 h-9 rounded-full bg-goldLuxury/30 border border-goldLuxury text-goldLight font-bold text-xs flex items-center justify-center opacity-50">3 ⭐</button>
+                        <button onclick="connectStar(4)" id="star-btn-4" class="absolute bottom-2 left-1/2 -translate-x-1/2 w-9 h-9 rounded-full bg-goldLuxury/30 border border-goldLuxury text-goldLight font-bold text-xs flex items-center justify-center opacity-50">4 ⭐</button>
+                        <button onclick="connectStar(5)" id="star-btn-5" class="absolute bottom-6 left-16 w-9 h-9 rounded-full bg-goldLuxury/30 border border-goldLuxury text-goldLight font-bold text-xs flex items-center justify-center opacity-50">5 ⭐</button>
+
+                        <div id="constellation-heart" class="hidden text-7xl animate-ping">💖</div>
+                    </div>
+
+                    <p id="star-game-msg" class="text-xs text-goldLight font-handwriting text-lg h-5"></p>
+                </div>
+
+                <!-- JUEGO 4: ROMPECABEZAS CORAZÓN -->
+                <div class="glass-luxury rounded-3xl p-5 border border-goldLuxury/30 space-y-3 text-center">
+                    <span class="bg-goldLuxury/20 text-goldLight px-3 py-1 rounded-full text-[9px] font-bold uppercase tracking-widest border border-goldLuxury/30">
+                        Juego 4: Rompecabezas Corazón
+                    </span>
+                    <h3 class="font-luxury text-lg font-bold text-white">Arma la Foto de Yasmin</h3>
+
+                    <div id="puzzle-grid" class="grid grid-cols-2 gap-1.5 w-60 h-60 mx-auto p-1.5 bg-black/60 rounded-2xl border border-goldLuxury/40">
+                        <div class="puzzle-slot border border-dashed border-goldLuxury/40 rounded-xl flex items-center justify-center overflow-hidden" data-slot="0"></div>
+                        <div class="puzzle-slot border border-dashed border-goldLuxury/40 rounded-xl flex items-center justify-center overflow-hidden" data-slot="1"></div>
+                        <div class="puzzle-slot border border-dashed border-goldLuxury/40 rounded-xl flex items-center justify-center overflow-hidden" data-slot="2"></div>
+                        <div class="puzzle-slot border border-dashed border-goldLuxury/40 rounded-xl flex items-center justify-center overflow-hidden" data-slot="3"></div>
+                    </div>
+
+                    <div id="puzzle-pieces" class="flex justify-center gap-2 pt-2"></div>
+
+                    <div id="puzzle-success" class="hidden p-3 bg-emerald-950/80 border border-emerald-500/50 rounded-2xl text-emerald-200 text-xs font-bold">
+                        🎉 ¡Completado! Eres la persona más especial del universo. ❤️
+                    </div>
+                </div>
+
+                <!-- JUEGO 5: RULETA MÁGICA -->
+                <div class="glass-luxury rounded-3xl p-5 border border-goldLuxury/30 space-y-3 text-center">
+                    <span class="bg-rose-500/20 text-rose-200 px-3 py-1 rounded-full text-[9px] font-bold uppercase tracking-widest border border-rose-400/30">
+                        Juego 5: Ruleta Mágica
+                    </span>
+                    <h3 class="font-luxury text-lg font-bold text-white">Gira y Desbloquea</h3>
+
+                    <div class="relative w-44 h-44 mx-auto my-2">
+                        <div id="fortune-wheel" class="w-full h-full rounded-full border-4 border-goldLuxury bg-gradient-to-tr from-purple-900 via-rose-950 to-amber-950 flex items-center justify-center transition-all duration-[4000ms] ease-out shadow-2xl overflow-hidden">
+                            <div class="text-center p-3">
+                                <span class="text-3xl">🔮</span>
+                                <p class="text-[10px] font-bold text-goldLight mt-1" id="wheel-text">¡Gírame!</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button onclick="spinWheel()" class="w-full py-2.5 bg-gradient-to-r from-purple-600 to-pink-600 text-white font-bold text-xs rounded-xl shadow-lg hover:scale-[1.01] transition-transform uppercase tracking-wider">
+                        Girar Ruleta
+                    </button>
+                </div>
+            </section>
+
+            <!-- TAB 3: CARTAS ROMÁNTICAS Y POEMAS CON SNOOPY -->
+            <section id="tab-letter" class="app-tab hidden space-y-4">
+                <div class="glass-luxury rounded-3xl p-6 border border-goldLuxury/30 space-y-4 text-center relative overflow-hidden">
+                    
+                    <div class="flex items-center justify-between border-b border-goldLuxury/20 pb-3">
+                        <span class="text-xs font-bold gold-gradient-text uppercase tracking-widest">
+                            <i class="fas fa-feather-alt mr-1"></i> Cartas Especiales
+                        </span>
+                        <span class="text-[10px] bg-goldLuxury/20 text-goldLight px-2.5 py-0.5 rounded-full font-semibold border border-goldLuxury/30">Para Yasmin</span>
+                    </div>
+
+                    <div class="flex justify-between items-center px-4">
+                        <span class="text-2xl">🌷</span>
+                        <img src="snoopy.png" alt="Snoopy" class="w-16 h-16 object-contain animate-float" onerror="this.src='https://media.giphy.com/media/K3A034TfBf2O0/giphy.gif'">
+                        <span class="text-2xl">🦋</span>
+                    </div>
+
+                    <div class="space-y-2">
+                        <select id="letter-selector" onchange="displayLetter(this.value)" class="w-full bg-black/60 border border-goldLuxury/40 rounded-xl px-3 py-2 text-xs text-goldLight font-bold">
+                            <option value="0">Carta 1: Poema de Luz Mágica ✨</option>
+                            <option value="1">Carta 2: Tulipanes y Mariposas Mágicas 🌷</option>
+                            <option value="2">Carta 3: La Luz de Tu Sonrisa 🌟</option>
+                            <option value="3">Carta 4: Promesa Eterna de Amor 💖</option>
+                        </select>
+
+                        <button onclick="randomLetter()" class="w-full py-2 bg-gradient-to-r from-pink-600 to-purple-600 text-white font-bold text-xs rounded-xl shadow hover:scale-[1.01] transition-transform flex items-center justify-center gap-2">
+                            <i class="fas fa-random"></i>
+                            <span>Carta Aleatoria</span>
+                        </button>
+                    </div>
+
+                    <div class="p-4 bg-black/40 rounded-2xl border border-goldLuxury/30 relative">
+                        <div class="text-lg text-pink-300 mb-2">🌷 🌷 ❤️ 🌷 🌷</div>
+                        <div id="letter-content" class="space-y-3 font-handwriting text-2xl text-pink-100 leading-relaxed min-h-[160px] flex flex-col justify-center"></div>
+                        <div class="mt-3 text-goldLuxury text-sm">🦋 ✨ 🌷 ✨ 🦋</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- TAB 4: GALERÍA DE FOTOS -->
+            <section id="tab-gallery" class="app-tab hidden space-y-4">
+                <div class="text-center space-y-1">
+                    <h3 class="font-luxury text-2xl font-bold gold-gradient-text">Galería Mágica</h3>
+                    <p class="text-xs text-pink-200/70">Toca el botón para revelar el elogio y desbloquear la foto ✨</p>
+                </div>
+
+                <div class="space-y-4">
+                    <!-- VIDEO GOLDEN MEMORIES (FORMATO VERTICAL TIKTOK FULL 9:16) -->
+                    <div class="glass-luxury rounded-3xl p-4 border border-goldLuxury/30 space-y-2 text-center">
+                        <p class="font-luxury text-sm font-bold gold-gradient-text uppercase tracking-widest mb-2">
+                            ✨ Golden Memories ✨
+                        </p>
+                        <div class="relative w-full max-w-[280px] mx-auto aspect-[9/16] rounded-2xl overflow-hidden border border-goldLuxury/40 shadow-2xl bg-black">
+                            <video controls class="w-full h-full object-cover">
+                                <source src="video_bosque.mp4" type="video/mp4">
+                            </video>
+                        </div>
+                    </div>
+
+                    <div class="glass-luxury rounded-3xl p-4 border border-goldLuxury/30 space-y-3">
+                        <div class="flex items-center justify-between border-b border-white/10 pb-2">
+                            <span class="text-xs font-bold gold-gradient-text uppercase tracking-widest">Elogio Especial 1</span>
+                            <span id="badge-photo-1" class="text-[9px] bg-amber-500/20 text-amber-300 px-2.5 py-0.5 rounded-full border border-amber-400/40">🔒 Bloqueado</span>
+                        </div>
+
+                        <div id="card-locked-1" class="p-4 bg-black/50 rounded-2xl text-center space-y-3 border border-goldLuxury/20">
+                            <span class="text-3xl">✨ 💎</span>
+                            <p class="font-handwriting text-2xl text-goldLight">¡Wow, sos totalmente estupenda!</p>
+                            <p class="text-[11px] text-pink-200 font-medium italic">"Tu presencia llena de luz hasta el rincón más sencillo."</p>
+                            <button onclick="unlockPhoto(1)" class="w-full py-2 bg-gradient-to-r from-goldLuxury to-amber-500 text-black font-bold text-xs rounded-xl shadow hover:scale-[1.01] transition-transform uppercase tracking-wider">
+                                Revelar Foto ✨
+                            </button>
+                        </div>
+
+                        <div id="card-unlocked-1" class="hidden space-y-2 animate-float">
+                            <div class="relative rounded-2xl overflow-hidden aspect-[4/5] border border-goldLuxury/40 shadow-xl">
+                                <img src="foto1.jpg" alt="Yasmin Bosque" class="w-full h-full object-cover">
+                            </div>
+                            <p class="font-handwriting text-2xl text-center gold-gradient-text font-bold">¡Sos estupenda y radiante! ✨</p>
+                        </div>
+                    </div>
+
+                    <div class="glass-luxury rounded-3xl p-4 border border-goldLuxury/30 space-y-3">
+                        <div class="flex items-center justify-between border-b border-white/10 pb-2">
+                            <span class="text-xs font-bold gold-gradient-text uppercase tracking-widest">Elogio Especial 2</span>
+                            <span id="badge-photo-2" class="text-[9px] bg-amber-500/20 text-amber-300 px-2.5 py-0.5 rounded-full border border-amber-400/40">🔒 Bloqueado</span>
+                        </div>
+
+                        <div id="card-locked-2" class="p-4 bg-black/50 rounded-2xl text-center space-y-3 border border-goldLuxury/20">
+                            <span class="text-3xl">🌸 💕</span>
+                            <p class="font-handwriting text-2xl text-goldLight">¡Increíblemente hermosa!</p>
+                            <p class="text-[11px] text-pink-200 font-medium italic">"Tienes una dulzura única que enamora a cualquiera."</p>
+                            <button onclick="unlockPhoto(2)" class="w-full py-2 bg-gradient-to-r from-goldLuxury to-amber-500 text-black font-bold text-xs rounded-xl shadow hover:scale-[1.01] transition-transform uppercase tracking-wider">
+                                Revelar Foto ✨
+                            </button>
+                        </div>
+
+                        <div id="card-unlocked-2" class="hidden space-y-2 animate-float">
+                            <div class="relative rounded-2xl overflow-hidden aspect-[4/5] border border-goldLuxury/40 shadow-xl">
+                                <img src="foto2.jpg" alt="Yasmin Selfie" class="w-full h-full object-cover">
+                            </div>
+                            <p class="font-handwriting text-2xl text-center gold-gradient-text font-bold">¡Dulzura y belleza pura! 💕</p>
+                        </div>
+                    </div>
+
+                    <div class="glass-luxury rounded-3xl p-4 border border-goldLuxury/30 space-y-3">
+                        <div class="flex items-center justify-between border-b border-white/10 pb-2">
+                            <span class="text-xs font-bold gold-gradient-text uppercase tracking-widest">Elogio Especial 3</span>
+                            <span id="badge-photo-3" class="text-[9px] bg-amber-500/20 text-amber-300 px-2.5 py-0.5 rounded-full border border-amber-400/40">🔒 Bloqueado</span>
+                        </div>
+
+                        <div id="card-locked-3" class="p-4 bg-black/50 rounded-2xl text-center space-y-3 border border-goldLuxury/20">
+                            <span class="text-3xl">👑 💎</span>
+                            <p class="font-handwriting text-2xl text-goldLight">¡Una reina fascinante!</p>
+                            <p class="text-[11px] text-pink-200 font-medium italic">"Tu estilo y elegancia están a otro nivel completamente."</p>
+                            <button onclick="unlockPhoto(3)" class="w-full py-2 bg-gradient-to-r from-goldLuxury to-amber-500 text-black font-bold text-xs rounded-xl shadow hover:scale-[1.01] transition-transform uppercase tracking-wider">
+                                Revelar Foto ✨
+                            </button>
+                        </div>
+
+                        <div id="card-unlocked-3" class="hidden space-y-2 animate-float">
+                            <div class="relative rounded-2xl overflow-hidden aspect-[4/5] border border-goldLuxury/40 shadow-xl">
+                                <img src="foto3.jpg" alt="Yasmin Elegante" class="w-full h-full object-cover">
+                            </div>
+                            <p class="font-handwriting text-2xl text-center gold-gradient-text font-bold">¡Elegancia de reina! 👑</p>
+                        </div>
+                    </div>
+
+                    <div class="glass-luxury rounded-3xl p-4 border border-goldLuxury/30 space-y-3">
+                        <div class="flex items-center justify-between border-b border-white/10 pb-2">
+                            <span class="text-xs font-bold gold-gradient-text uppercase tracking-widest">Elogio Especial 4</span>
+                            <span id="badge-photo-4" class="text-[9px] bg-amber-500/20 text-amber-300 px-2.5 py-0.5 rounded-full border border-amber-400/40">🔒 Bloqueado</span>
+                        </div>
+
+                        <div id="card-locked-4" class="p-4 bg-black/50 rounded-2xl text-center space-y-3 border border-goldLuxury/20">
+                            <span class="text-3xl">💫 🖤</span>
+                            <p class="font-handwriting text-2xl text-goldLight">¡Sencillamente espectacular!</p>
+                            <p class="text-[11px] text-pink-200 font-medium italic">"Cada mirada tuya transmite pura magia y arte."</p>
+                            <button onclick="unlockPhoto(4)" class="w-full py-2 bg-gradient-to-r from-goldLuxury to-amber-500 text-black font-bold text-xs rounded-xl shadow hover:scale-[1.01] transition-transform uppercase tracking-wider">
+                                Revelar Foto ✨
+                            </button>
+                        </div>
+
+                        <div id="card-unlocked-4" class="hidden space-y-2 animate-float">
+                            <div class="relative rounded-2xl overflow-hidden aspect-[4/5] border border-goldLuxury/40 shadow-xl">
+                                <img src="foto4.jpg" alt="Yasmin Recuerdo" class="w-full h-full object-cover">
+                            </div>
+                            <p class="font-handwriting text-2xl text-center gold-gradient-text font-bold">¡Sos arte puro! 💫</p>
+                        </div>
+                    </div>
+
+                    <div class="glass-luxury rounded-3xl p-4 border border-goldLuxury/30 space-y-3">
+                        <div class="flex items-center justify-between border-b border-white/10 pb-2">
+                            <span class="text-xs font-bold gold-gradient-text uppercase tracking-widest">Elogio Especial 5</span>
+                            <span id="badge-photo-5" class="text-[9px] bg-amber-500/20 text-amber-300 px-2.5 py-0.5 rounded-full border border-amber-400/40">🔒 Bloqueado</span>
+                        </div>
+
+                        <div id="card-locked-5" class="p-4 bg-black/50 rounded-2xl text-center space-y-3 border border-goldLuxury/20">
+                            <span class="text-3xl">🌙 🌹</span>
+                            <p class="font-handwriting text-2xl text-goldLight">¡Un encanto inolvidable!</p>
+                            <p class="text-[11px] text-pink-200 font-medium italic">"Esa mirada cautivadora es verdaderamente única."</p>
+                            <button onclick="unlockPhoto(5)" class="w-full py-2 bg-gradient-to-r from-goldLuxury to-amber-500 text-black font-bold text-xs rounded-xl shadow hover:scale-[1.01] transition-transform uppercase tracking-wider">
+                                Revelar Foto ✨
+                            </button>
+                        </div>
+
+                        <div id="card-unlocked-5" class="hidden space-y-2 animate-float">
+                            <div class="relative rounded-2xl overflow-hidden aspect-[4/5] border border-goldLuxury/40 shadow-xl">
+                                <img src="foto5.jpg" alt="Yasmin Capucha" class="w-full h-full object-cover">
+                            </div>
+                            <p class="font-handwriting text-2xl text-center gold-gradient-text font-bold">¡Encanto único e hipnotizante! 🌹</p>
+                        </div>
+                    </div>
+
+                    <div class="glass-luxury rounded-3xl p-4 border border-goldLuxury/30 space-y-3">
+                        <div class="flex items-center justify-between border-b border-white/10 pb-2">
+                            <span class="text-xs font-bold gold-gradient-text uppercase tracking-widest">Elogio Especial 6</span>
+                            <span id="badge-photo-6" class="text-[9px] bg-amber-500/20 text-amber-300 px-2.5 py-0.5 rounded-full border border-amber-400/40">🔒 Bloqueado</span>
+                        </div>
+
+                        <div id="card-locked-6" class="p-4 bg-black/50 rounded-2xl text-center space-y-3 border border-goldLuxury/20">
+                            <span class="text-3xl">🌟 💖</span>
+                            <p class="font-handwriting text-2xl text-goldLight">¡Simplemente maravillosa!</p>
+                            <p class="text-[11px] text-pink-200 font-medium italic">"Un instante mágico lleno de luz y felicidad."</p>
+                            <button onclick="unlockPhoto(6)" class="w-full py-2 bg-gradient-to-r from-goldLuxury to-amber-500 text-black font-bold text-xs rounded-xl shadow hover:scale-[1.01] transition-transform uppercase tracking-wider">
+                                Revelar Foto ✨
+                            </button>
+                        </div>
+
+                        <div id="card-unlocked-6" class="hidden space-y-2 animate-float">
+                            <div class="relative rounded-2xl overflow-hidden aspect-[4/5] border border-goldLuxury/40 shadow-xl">
+                                <img src="foto6.jpg" alt="Yasmin Recuerdo" class="w-full h-full object-cover">
+                            </div>
+                            <p class="font-handwriting text-2xl text-center gold-gradient-text font-bold">¡Momentos inolvidables! 💖</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- TAB 5: JARDÍN INTERACTIVO -->
+            <section id="tab-garden" class="app-tab hidden space-y-4">
+                <div class="glass-luxury rounded-3xl p-5 border border-goldLuxury/30 text-center space-y-5">
+                    
+                    <h3 class="font-luxury text-2xl font-bold gold-gradient-text">Jardín de los Deseos</h3>
+
+                    <div class="py-2 flex flex-col items-center justify-center">
+                        <div class="w-24 h-24 text-6xl flex items-center justify-center animate-spin-3d drop-shadow-2xl cursor-pointer">
+                            ❤️
+                        </div>
+                        <p class="text-[10px] text-pink-200 font-medium mt-2">Corazón Mágico 360°</p>
+                    </div>
+
+                    <div class="p-4 bg-black/50 rounded-2xl border border-goldLuxury/30 space-y-3 relative">
+                        <p class="text-xs font-bold text-goldLight uppercase tracking-wider">Apunta y Flecha el Corazón</p>
+                        
+                        <div class="relative w-32 h-32 mx-auto flex items-center justify-center">
+                            <div id="target-heart" class="text-6xl transition-transform duration-300">
+                                💖
+                            </div>
+                            <div id="arrow-item" class="absolute left-0 text-3xl transition-all duration-700 opacity-0 pointer-events-none">
+                                🏹
+                            </div>
+                        </div>
+
+                        <button onclick="shootArrow()" class="px-6 py-2 bg-gradient-to-r from-pink-600 to-rose-600 text-white font-bold text-xs rounded-full shadow-lg hover:scale-105 transition-transform uppercase tracking-wider">
+                            ¡Flechar Corazón! 💘
+                        </button>
+                        <p id="arrow-status" class="text-xs text-goldLight font-handwriting text-lg h-6"></p>
+                    </div>
+
+                    <div class="p-4 bg-black/50 rounded-2xl border border-goldLuxury/30 space-y-3 text-left">
+                        <label class="text-xs font-bold text-goldLight uppercase tracking-wider block text-center">
+                            ✨ Pedir un Deseo Especial
+                        </label>
+                        <textarea id="wish-input" rows="2" placeholder="Escribe tu deseo aquí, Yasmin..." class="w-full bg-black/70 border border-goldLuxury/40 rounded-xl p-2.5 text-xs text-pink-100 focus:outline-none focus:border-goldLuxury placeholder-gray-500"></textarea>
+                        
+                        <button onclick="makeWish()" class="w-full py-2.5 bg-gradient-to-r from-goldLuxury to-amber-500 text-black font-bold text-xs rounded-xl shadow-lg hover:scale-[1.01] transition-transform uppercase tracking-wider flex items-center justify-center gap-2">
+                            <i class="fas fa-star"></i>
+                            <span>Enviar Deseo a las Estrellas</span>
+                        </button>
+                        <p id="wish-msg" class="text-xs text-emerald-300 font-bold text-center hidden"></p>
+                    </div>
+
+                    <button onclick="triggerBloom()" class="w-full py-3.5 bg-gradient-to-r from-goldLuxury via-amber-500 to-rose-500 text-black font-bold rounded-xl shadow-xl hover:scale-[1.02] transition-transform text-xs uppercase tracking-wider flex items-center justify-center gap-2">
+                        <span>Llenar Pantalla de Flores</span>
+                        <span class="text-base">🌷🦋</span>
+                    </button>
+                </div>
+            </section>
+
+        </main>
+
+        <!-- NAVEGACIÓN INFERIOR -->
+        <nav class="fixed bottom-3 left-1/2 -translate-x-1/2 w-[92%] max-w-md bg-black/80 bottom-nav border border-goldLuxury/40 rounded-3xl p-2 flex justify-around items-center shadow-2xl z-30">
+            <button onclick="switchTab('home')" id="nav-home" class="nav-btn flex flex-col items-center gap-1 p-2 text-goldLuxury">
+                <i class="fas fa-globe text-base"></i>
+                <span class="text-[8px] font-bold tracking-wider">Universo</span>
+            </button>
+            <button onclick="switchTab('games')" id="nav-games" class="nav-btn flex flex-col items-center gap-1 p-2 text-gray-400">
+                <i class="fas fa-gamepad text-base"></i>
+                <span class="text-[8px] font-bold tracking-wider">Juegos</span>
+            </button>
+            <button onclick="switchTab('letter')" id="nav-letter" class="nav-btn flex flex-col items-center gap-1 p-2 text-gray-400">
+                <i class="fas fa-envelope text-base"></i>
+                <span class="text-[8px] font-bold tracking-wider">Carta</span>
+            </button>
+            <button onclick="switchTab('gallery')" id="nav-gallery" class="nav-btn flex flex-col items-center gap-1 p-2 text-gray-400">
+                <i class="fas fa-images text-base"></i>
+                <span class="text-[8px] font-bold tracking-wider">Fotos</span>
+            </button>
+            <button onclick="switchTab('garden')" id="nav-garden" class="nav-btn flex flex-col items-center gap-1 p-2 text-gray-400">
+                <i class="fas fa-seedling text-base"></i>
+                <span class="text-[8px] font-bold tracking-wider">Jardín</span>
+            </button>
+        </nav>
+
+    </div>
+
+    <!-- SCRIPT CONTROLADOR Y LÓGICA -->
+    <script>
+        /* -------------------------------------------------------------
+           LÓGICA DEL JUEGO CONSTELACIÓN MÁGICA
+        ------------------------------------------------------------- */
+        let currentStarStep = 1;
+        function connectStar(num) {
+            const msg = document.getElementById('star-game-msg');
+            if (num === currentStarStep) {
+                const btn = document.getElementById('star-btn-' + num);
+                btn.className = "absolute w-9 h-9 rounded-full bg-emerald-500 text-black font-bold text-xs flex items-center justify-center shadow-lg animate-bounce";
+                
+                currentStarStep++;
+                if (currentStarStep <= 5) {
+                    const nextBtn = document.getElementById('star-btn-' + currentStarStep);
+                    nextBtn.classList.remove('opacity-50');
+                    nextBtn.classList.add('animate-pulse');
+                    msg.textContent = `¡Bien! Toca la estrella ${currentStarStep}... ✨`;
+                } else {
+                    document.getElementById('constellation-heart').classList.remove('hidden');
+                    msg.textContent = "✨ ¡Constelación completada! Amor por siempre. 💞";
+                    triggerBloom();
+                }
+            }
+        }
+
+        /* -------------------------------------------------------------
+           LÓGICA DEL JUEGO DE PALABRAS SECRETA (TU Y YO POR SIEMPRE)
+        ------------------------------------------------------------- */
+        const secretWord = "TU Y YO POR SIEMPRE";
+        let revealedLetters = [];
+
+        function initWordGame() {
+            const board = document.getElementById('word-game-board');
+            const keyboard = document.getElementById('word-game-keyboard');
+            board.innerHTML = '';
+            keyboard.innerHTML = '';
+
+            secretWord.split('').forEach((char, idx) => {
+                const box = document.createElement('div');
+                if (char === ' ') {
+                    box.className = 'w-4 h-8';
+                } else {
+                    box.className = 'w-7 h-9 border-2 border-goldLuxury rounded-lg bg-black/60 flex items-center justify-center text-xs font-bold text-goldLight uppercase shadow';
+                    box.dataset.char = char;
+                    box.id = 'word-box-' + idx;
+                    box.textContent = revealedLetters.includes(char) ? char : '_';
+                }
+                board.appendChild(box);
+            });
+
+            const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split('');
+            letters.forEach(letra => {
+                const btn = document.createElement('button');
+                btn.className = 'w-7 h-7 bg-purple-900/60 border border-goldLuxury/40 rounded-md text-[10px] font-bold text-pink-100 hover:bg-goldLuxury hover:text-black transition';
+                btn.textContent = letra;
+                btn.onclick = () => guessLetter(letra, btn);
+                keyboard.appendChild(btn);
+            });
+        }
+
+        function guessLetter(letra, btn) {
+            btn.disabled = true;
+            btn.className = 'w-7 h-7 bg-gray-800 border border-gray-600 rounded-md text-[10px] font-bold text-gray-500 cursor-not-allowed';
+
+            if (secretWord.includes(letra)) {
+                revealedLetters.push(letra);
+                secretWord.split('').forEach((char, idx) => {
+                    if (char === letra) {
+                        const box = document.getElementById('word-box-' + idx);
+                        if (box) box.textContent = letra;
+                    }
+                });
+
+                const allRevealed = secretWord.split('').every(c => c === ' ' || revealedLetters.includes(c));
+                if (allRevealed) {
+                    document.getElementById('word-game-success').classList.remove('hidden');
+                    triggerBloom();
+                }
+            }
+        }
+
+        /* -------------------------------------------------------------
+           LÓGICA DEL JUEGO BUBU Y DUDU
+        ------------------------------------------------------------- */
+        function moveBubu(val) {
+            const fill = document.getElementById('path-fill');
+            const reward = document.getElementById('bubu-dudu-reward');
+            fill.style.width = val + '%';
+
+            if(parseInt(val) === 100) {
+                reward.classList.remove('hidden');
+                triggerBloom();
+            } else {
+                reward.classList.add('hidden');
+            }
+        }
+
+        /* -------------------------------------------------------------
+           LÓGICA DEL JARDÍN: FLECHAZO Y DESEOS
+        ------------------------------------------------------------- */
+        function shootArrow() {
+            const arrow = document.getElementById('arrow-item');
+            const target = document.getElementById('target-heart');
+            const status = document.getElementById('arrow-status');
+
+            arrow.style.opacity = '1';
+            arrow.style.transform = 'translateX(90px)';
+
+            setTimeout(() => {
+                target.style.transform = 'scale(1.4)';
+                target.textContent = '💘';
+                status.textContent = '¡Corazón flechado con éxito! 💞';
+                triggerBloom();
+            }, 500);
+
+            setTimeout(() => {
+                arrow.style.opacity = '0';
+                arrow.style.transform = 'translateX(0px)';
+                setTimeout(() => target.style.transform = 'scale(1)', 1000);
+            }, 2000);
+        }
+
+        function makeWish() {
+            const input = document.getElementById('wish-input');
+            const msg = document.getElementById('wish-msg');
+            if(input.value.trim() !== '') {
+                msg.textContent = "✨ ¡Tu deseo ha sido enviado a las estrellas y se cumplirá!";
+                msg.classList.remove('hidden');
+                input.value = '';
+                triggerBloom();
+            }
+        }
+
+        /* -------------------------------------------------------------
+           DESBLOQUEO DE FOTOS
+        ------------------------------------------------------------- */
+        function unlockPhoto(id) {
+            document.getElementById('card-locked-' + id).classList.add('hidden');
+            document.getElementById('card-unlocked-' + id).classList.remove('hidden');
+            const badge = document.getElementById('badge-photo-' + id);
+            badge.className = "text-[9px] bg-emerald-500/20 text-emerald-300 px-2.5 py-0.5 rounded-full border border-emerald-400/40";
+            badge.textContent = "🔓 Desbloqueado";
+            triggerBloom();
+        }
+
+        /* -------------------------------------------------------------
+           COLECCIÓN DE CARTAS
+        ------------------------------------------------------------- */
+        const lettersCollection = [
+            `
+            <p>En el cielo estrellado de tu mirada,</p>
+            <p>encuentro la paz más dulce y anhelada.</p>
+            <p>Eres tulipán que florece en la mañana,</p>
+            <p>y mariposa libre que la brisa acompaña.</p>
+            <p class="text-goldLuxury text-base my-2">✨ 💖 ✨</p>
+            <p>Con canciones, risas y momentos de sol,</p>
+            <p>llenaste mi vida con tu luz y tu amor.</p>
+            <p>Para Yasmin Stefany, mi reina especial.</p>
+            `,
+            `
+            <p>🌷 Un jardín entero no alcanzaría,</p>
+            <p>para comparar tu dulzura y alegría.</p>
+            <p>Como mariposa que vuela sin temor,</p>
+            <p>llenas cada día de brillo y color.</p>
+            <p class="text-goldLuxury text-base my-2">💖 🦋 💖</p>
+            <p>Nunca cambies esa esencia sin igual,</p>
+            <p>eres y serás siempre mi persona especial.</p>
+            `,
+            `
+            <p>🌟 Hay sonrisas que iluminan el mundo,</p>
+            <p>pero la tuya genera un impacto profundo.</p>
+            <p>En cada paso, en cada mirada y canción,</p>
+            <p>te llevas un pedacito de mi corazón.</p>
+            <p class="text-goldLuxury text-base my-2">✨ 👑 ✨</p>
+            <p>Sigue brillando como solo tú sabes hacer,</p>
+            <p>¡que el mundo entero te vea florecer!</p>
+            `,
+            `
+            <p>💖 Cada momento grabado en el corazón,</p>
+            <p>es una dulce muestra de pura pasión.</p>
+            <p>Junto a ti la vida se llena de felicidad,</p>
+            <p>un amor sincero por toda la eternidad.</p>
+            <p class="text-goldLuxury text-base my-2">🌹 💕 🌹</p>
+            <p>Gracias por existir, Yasmin Stefany,</p>
+            <p>esta app fue creada únicamente para ti.</p>
+            `
+        ];
+
+        function displayLetter(index) {
+            document.getElementById('letter-content').innerHTML = lettersCollection[index];
+            triggerBloom();
+        }
+
+        function randomLetter() {
+            const randomIdx = Math.floor(Math.random() * lettersCollection.length);
+            document.getElementById('letter-selector').value = randomIdx;
+            displayLetter(randomIdx);
+        }
+
+        /* -------------------------------------------------------------
+           SISTEMA DE 14 CANCIONES
+        ------------------------------------------------------------- */
+        const playlist = [
+            { file: 'cancion1.mp3', title: 'Te Prometo 🎵', artist: 'Melendi • Para Yasmin' },
+            { file: 'cancion2.mp3', title: 'Canción Especial 2 💕', artist: 'Melodía Romántica' },
+            { file: 'cancion3.mp3', title: 'Canción Especial 3 🌟', artist: 'Favorita de Yasmin' },
+            { file: 'cancion4.mp3', title: 'Canción Especial 4 ✨', artist: 'Para Yasmin Stefany' },
+            { file: 'cancion5.mp3', title: 'Canción Especial 5 🌹', artist: 'Recuerdo Eterno' },
+            { file: 'cancion6.mp3', title: 'Canción Especial 6 💖', artist: 'Pista Mágica' },
+            { file: 'cancion7.mp3', title: 'Canción Especial 7 🎆', artist: 'Momento Especial' },
+            { file: 'cancion8.mp3', title: 'Canción Especial 8 💎', artist: 'Luz Estelar' },
+            { file: 'cancion9.mp3', title: 'Canción Especial 9 🌸', artist: 'Jardín Mágico' },
+            { file: 'cancion10.mp3', title: 'Canción Especial 10 👑', artist: 'Reina Especial' },
+            { file: 'cancion11.mp3', title: 'Canción Especial 11 💫', artist: 'Estrella Mágica' },
+            { file: 'cancion12.mp3', title: 'Canción Especial 12 🌷', artist: 'Flor Mágica' },
+            { file: 'cancion13.mp3', title: 'Canción Especial 13 🦋', artist: 'Vuelo Inolvidable' },
+            { file: 'cancion14.mp3', title: 'Canción Especial 14 ❤️', artist: 'Amor Eterno' }
+        ];
+
+        let currentTrackIdx = 0;
+        const bgAudio = document.getElementById('bg-music');
+        const playBtnIcon = document.getElementById('main-play-icon');
+        const scrubber = document.getElementById('music-scrubber');
+        let isPlaying = false;
+
+        function loadTrack(index) {
+            currentTrackIdx = index;
+            document.getElementById('music-source').src = playlist[index].file;
+            document.getElementById('track-title').textContent = playlist[index].title;
+            document.getElementById('track-artist').textContent = playlist[index].artist;
+            document.getElementById('track-number').textContent = `Pista ${index + 1} de 14`;
+            document.getElementById('song-selector').value = index;
+            bgAudio.load();
+            if (isPlaying) bgAudio.play().catch(() => {});
+        }
+
+        function selectTrack(value) {
+            loadTrack(parseInt(value));
+            playAudio();
+        }
+
+        function nextTrack() {
+            currentTrackIdx = (currentTrackIdx + 1) % playlist.length;
+            loadTrack(currentTrackIdx);
+            playAudio();
+        }
+
+        function prevTrack() {
+            currentTrackIdx = (currentTrackIdx - 1 + playlist.length) % playlist.length;
+            loadTrack(currentTrackIdx);
+            playAudio();
+        }
+
+        function playAudio() {
+            bgAudio.play().then(() => {
+                isPlaying = true;
+                playBtnIcon.className = 'fas fa-pause';
+            }).catch(() => {
+                isPlaying = false;
+                playBtnIcon.className = 'fas fa-play ml-0.5';
+            });
+        }
+
+        function toggleAudio() {
+            if (isPlaying) {
+                bgAudio.pause();
+                isPlaying = false;
+                playBtnIcon.className = 'fas fa-play ml-0.5';
+            } else {
+                playAudio();
+            }
+        }
+
+        function rewindAudio() { bgAudio.currentTime = Math.max(0, bgAudio.currentTime - 10); }
+        function forwardAudio() { bgAudio.currentTime = Math.min(bgAudio.duration || 0, bgAudio.currentTime + 10); }
+
+        bgAudio.addEventListener('timeupdate', () => {
+            if (bgAudio.duration) {
+                scrubber.value = (bgAudio.currentTime / bgAudio.duration) * 100;
+                document.getElementById('music-time-curr').textContent = formatTime(bgAudio.currentTime);
+                document.getElementById('music-time-dur').textContent = formatTime(bgAudio.duration);
+            }
+        });
+
+        scrubber.addEventListener('input', (e) => {
+            if (bgAudio.duration) bgAudio.currentTime = (e.target.value / 100) * bgAudio.duration;
+        });
+
+        function formatTime(sec) {
+            const m = Math.floor(sec / 60);
+            const s = Math.floor(sec % 60);
+            return `${m}:${s < 10 ? '0' : ''}${s}`;
+        }
+
+        /* -------------------------------------------------------------
+           MOTIVACIÓN
+        ------------------------------------------------------------- */
+        const motivationalPhrases = [
+            "\"Yasmin, nunca olvides que tu sonrisa ilumina el día de quienes te rodean.\"",
+            "\"Cada obstáculo es solo un escalón más hacia tus grandes sueños, sigue adelante.\"",
+            "\"Tu valentía y dulzura hacen que el mundo sea un lugar infinitamente mejor.\"",
+            "\"Confía en ti misma tanto como yo confío en tu increíble talento y corazón.\"",
+            "\"Ningún cielo es demasiado alto cuando vuelas con la determinación de tu alma.\"",
+            "\"Eres una mujer fuerte, única y maravillosa. ¡Hoy será un día fantástico!\""
+        ];
+
+        function generateMotivation() {
+            const phraseText = document.getElementById('motivational-phrase');
+            const random = Math.floor(Math.random() * motivationalPhrases.length);
+            phraseText.textContent = motivationalPhrases[random];
+            triggerBloom();
+        }
+
+        /* -------------------------------------------------------------
+           SCRATCH CARD
+        ------------------------------------------------------------- */
+        const scratchCanvas = document.getElementById('scratch-canvas');
+        const scratchCtx = scratchCanvas.getContext('2d');
+        let isScratching = false;
+
+        function initScratchCard() {
+            const rect = scratchCanvas.getBoundingClientRect();
+            scratchCanvas.width = rect.width;
+            scratchCanvas.height = rect.height;
+
+            const grad = scratchCtx.createLinearGradient(0, 0, rect.width, rect.height);
+            grad.addColorStop(0, '#D4AF37');
+            grad.addColorStop(0.5, '#581B28');
+            grad.addColorStop(1, '#0B0B1A');
+            scratchCtx.fillStyle = grad;
+            scratchCtx.fillRect(0, 0, rect.width, rect.height);
+
+            scratchCtx.fillStyle = '#FFFFFF';
+            scratchCtx.font = 'bold 16px Montserrat, sans-serif';
+            scratchCtx.textAlign = 'center';
+            scratchCtx.fillText('✨ RASPA AQUÍ YASMIN ✨', rect.width / 2, rect.height / 2);
+        }
+
+        function scratch(e) {
+            if (!isScratching) return;
+            const rect = scratchCanvas.getBoundingClientRect();
+            const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+            const clientY = e.touches ? e.touches[0].clientY : e.clientY;
+
+            scratchCtx.globalCompositeOperation = 'destination-out';
+            scratchCtx.beginPath();
+            scratchCtx.arc(clientX - rect.left, clientY - rect.top, 28, 0, Math.PI * 2);
+            scratchCtx.fill();
+        }
+
+        scratchCanvas.addEventListener('mousedown', () => isScratching = true);
+        scratchCanvas.addEventListener('mouseup', () => isScratching = false);
+        scratchCanvas.addEventListener('mousemove', scratch);
+        scratchCanvas.addEventListener('touchstart', () => isScratching = true);
+        scratchCanvas.addEventListener('touchend', () => isScratching = false);
+        scratchCanvas.addEventListener('touchmove', scratch);
+
+        function enterApp() {
+            document.getElementById('scratch-overlay').style.opacity = '0';
+            setTimeout(() => document.getElementById('scratch-overlay').style.display = 'none', 1000);
+            playAudio();
+            initJigsawGame();
+            initWordGame();
+            displayLetter(0);
+        }
+
+        /* -------------------------------------------------------------
+           NAVEGACIÓN
+        ------------------------------------------------------------- */
+        function switchTab(tabId) {
+            document.querySelectorAll('.app-tab').forEach(tab => tab.classList.add('hidden'));
+            document.getElementById('tab-' + tabId).classList.remove('hidden');
+
+            document.querySelectorAll('.nav-btn').forEach(btn => {
+                btn.classList.remove('text-goldLuxury');
+                btn.classList.add('text-gray-400');
+            });
+            const activeBtn = document.getElementById('nav-' + tabId);
+            if(activeBtn) activeBtn.className = 'nav-btn flex flex-col items-center gap-1 p-2 text-goldLuxury';
+        }
+
+        /* -------------------------------------------------------------
+           ESTRELLAS Y CANDADO
+        ------------------------------------------------------------- */
+        const starQuotes = [
+            "Yasmin, eres el destello de luz que ilumina todo a su paso. ✨",
+            "Tu sonrisa tiene la fuerza de mil estrellas juntas. 🌟",
+            "Cada momento vivido contigo es un tesoro para siempre. 💖",
+            "Entre millones de galaxias, siempre te elegiría a ti. 💫",
+            "Eres mi reina, mi inspiración y mi alegría de cada día. 👑"
+        ];
+
+        function revealStarQuote(index) {
+            document.getElementById('star-quote-text').textContent = starQuotes[index];
+            triggerBloom();
+        }
+
+        function unlockMemory() {
+            document.getElementById('lock-inputs').style.display = 'none';
+            document.getElementById('unlocked-memory').classList.remove('hidden');
+            document.getElementById('padlock-icon').className = 'fas fa-unlock text-lg text-emerald-400';
+            triggerBloom();
+        }
+
+        /* -------------------------------------------------------------
+           JIGSAW PUZZLE
+        ------------------------------------------------------------- */
+        function initJigsawGame() {
+            const piecesContainer = document.getElementById('puzzle-pieces');
+            piecesContainer.innerHTML = '';
+            const imgUrl = 'foto3.jpg';
+            const coords = [{ x: '0%', y: '0%' }, { x: '100%', y: '0%' }, { x: '0%', y: '100%' }, { x: '100%', y: '100%' }];
+            
+            [0, 1, 2, 3].sort(() => Math.random() - 0.5).forEach(idx => {
+                const piece = document.createElement('div');
+                piece.className = 'w-14 h-14 rounded-xl border border-goldLuxury cursor-pointer bg-cover shadow';
+                piece.style.backgroundImage = `url(${imgUrl})`;
+                piece.style.backgroundSize = '200% 200%';
+                piece.style.backgroundPosition = `${coords[idx].x} ${coords[idx].y}`;
+                piece.dataset.pieceIdx = idx;
+
+                piece.addEventListener('click', () => {
+                    const emptySlot = document.querySelector('.puzzle-slot:empty');
+                    if(emptySlot) {
+                        emptySlot.appendChild(piece);
+                        checkJigsawWin();
+                    }
+                });
+                piecesContainer.appendChild(piece);
+            });
+        }
+
+        function checkJigsawWin() {
+            let correct = 0;
+            document.querySelectorAll('.puzzle-slot').forEach((slot, idx) => {
+                const child = slot.querySelector('[data-piece-idx]');
+                if(child && parseInt(child.dataset.pieceIdx) === idx) correct++;
+            });
+            if(correct === 4) {
+                document.getElementById('puzzle-success').classList.remove('hidden');
+                triggerBloom();
+            }
+        }
+
+        function spinWheel() {
+            const wheel = document.getElementById('fortune-wheel');
+            wheel.style.transform = `rotate(${1440 + Math.floor(Math.random() * 360)}deg)`;
+            setTimeout(() => {
+                document.getElementById('wheel-text').textContent = "¡Promesa: Un día increíble e inolvidable juntos!";
+                triggerBloom();
+            }, 4000);
+        }
+
+        /* -------------------------------------------------------------
+           PARTÍCULAS Y ANIMACIONES
+        ------------------------------------------------------------- */
+        const cosmosCanvas = document.getElementById('cosmos-canvas');
+        const cCtx = cosmosCanvas.getContext('2d');
+        const particleCanvas = document.getElementById('particle-canvas');
+        const pCtx = particleCanvas.getContext('2d');
+
+        function resizeCanvases() {
+            cosmosCanvas.width = window.innerWidth;
+            cosmosCanvas.height = window.innerHeight;
+            particleCanvas.width = window.innerWidth;
+            particleCanvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resizeCanvases);
+        resizeCanvases();
+
+        const particles = [];
+        const symbols = ['🌷', '🦋', '✨', '❤️', '🌸'];
+
+        class Particle {
+            constructor() { this.reset(); }
+            reset() {
+                this.x = Math.random() * particleCanvas.width;
+                this.y = particleCanvas.height + 20;
+                this.size = Math.random() * 16 + 12;
+                this.speedY = Math.random() * 1.2 + 0.5;
+                this.symbol = symbols[Math.floor(Math.random() * symbols.length)];
+                this.opacity = Math.random() * 0.7 + 0.3;
+            }
+            update() {
+                this.y -= this.speedY;
+                if (this.y < -30) this.reset();
+            }
+            draw() {
+                pCtx.globalAlpha = this.opacity;
+                pCtx.font = `${this.size}px Arial`;
+                pCtx.fillText(this.symbol, this.x, this.y);
+            }
+        }
+
+        for (let i = 0; i < 15; i++) particles.push(new Particle());
+
+        function animate() {
+            pCtx.clearRect(0, 0, particleCanvas.width, particleCanvas.height);
+            particles.forEach(p => { p.update(); p.draw(); });
+            requestAnimationFrame(animate);
+        }
+        animate();
+
+        function triggerBloom() {
+            for (let i = 0; i < 10; i++) particles.push(new Particle());
+        }
+
+        window.onload = function() {
+            initScratchCard();
+            displayLetter(0);
+        };
+    </script>
+</body>
+</html>
