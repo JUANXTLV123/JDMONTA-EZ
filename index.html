@@ -293,32 +293,73 @@
                     </button>
                 </div>
 
-                <!-- CÁPSULA DE RECUERDOS (FORMATO VERTICAL TIKTOK) -->
+                <!-- CÁPSULA DE RECUERDOS (TODAS LAS FECHAS DISPONIBLES) -->
                 <div class="glass-luxury rounded-3xl p-5 border border-goldLuxury/30 space-y-3 text-center">
                     <div class="flex items-center justify-center gap-2 text-goldLuxury">
                         <i class="fas fa-lock text-lg" id="padlock-icon"></i>
                         <h3 class="font-luxury text-xs font-bold uppercase tracking-widest">Cápsula de Recuerdos 🔒</h3>
                     </div>
-                    <p class="text-[11px] text-pink-100/80">Selecciona la fecha especial para abrir tu cápsula:</p>
+                    <p class="text-[11px] text-pink-100/80">Selecciona la fecha secreta especial para abrir tu cápsula:</p>
 
                     <div id="lock-inputs" class="flex justify-center items-center gap-2 my-2">
-                        <select id="lock-day" class="bg-black/60 border border-goldLuxury/40 rounded-xl px-2.5 py-1.5 text-xs text-goldLight font-bold"><option value="30">30</option></select>
+                        <!-- DÍAS DEL 1 AL 31 -->
+                        <select id="lock-day" class="bg-black/60 border border-goldLuxury/40 rounded-xl px-2 py-1.5 text-xs text-goldLight font-bold">
+                            <option value="01">01</option><option value="02">02</option><option value="03">03</option><option value="04">04</option><option value="05">05</option>
+                            <option value="06">06</option><option value="07">07</option><option value="08">08</option><option value="09">09</option><option value="10">10</option>
+                            <option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option>
+                            <option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option>
+                            <option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option><option value="25">25</option>
+                            <option value="26">26</option><option value="27">27</option><option value="28">28</option><option value="29">29</option><option value="30" selected>30</option><option value="31">31</option>
+                        </select>
                         <span class="text-goldLuxury font-bold text-xs">/</span>
-                        <select id="lock-month" class="bg-black/60 border border-goldLuxury/40 rounded-xl px-2.5 py-1.5 text-xs text-goldLight font-bold"><option value="Agosto">Agosto</option></select>
+
+                        <!-- MESES DE ENERO A DICIEMBRE -->
+                        <select id="lock-month" class="bg-black/60 border border-goldLuxury/40 rounded-xl px-2 py-1.5 text-xs text-goldLight font-bold">
+                            <option value="Enero">Enero</option>
+                            <option value="Febrero">Febrero</option>
+                            <option value="Marzo">Marzo</option>
+                            <option value="Abril">Abril</option>
+                            <option value="Mayo">Mayo</option>
+                            <option value="Junio">Junio</option>
+                            <option value="Julio">Julio</option>
+                            <option value="Agosto" selected>Agosto</option>
+                            <option value="Septiembre">Septiembre</option>
+                            <option value="Octubre">Octubre</option>
+                            <option value="Noviembre">Noviembre</option>
+                            <option value="Diciembre">Diciembre</option>
+                        </select>
                         <span class="text-goldLuxury font-bold text-xs">/</span>
-                        <select id="lock-year" class="bg-black/60 border border-goldLuxury/40 rounded-xl px-2.5 py-1.5 text-xs text-goldLight font-bold"><option value="2026">2026</option></select>
+
+                        <!-- AÑOS DEL 2020 AL 2030 -->
+                        <select id="lock-year" class="bg-black/60 border border-goldLuxury/40 rounded-xl px-2 py-1.5 text-xs text-goldLight font-bold">
+                            <option value="2020">2020</option>
+                            <option value="2021">2021</option>
+                            <option value="2022">2022</option>
+                            <option value="2023">2023</option>
+                            <option value="2024">2024</option>
+                            <option value="2025">2025</option>
+                            <option value="2026" selected>2026</option>
+                            <option value="2027">2027</option>
+                            <option value="2028">2028</option>
+                            <option value="2029">2029</option>
+                            <option value="2030">2030</option>
+                        </select>
                     </div>
 
                     <button onclick="unlockMemory()" class="w-full py-2.5 bg-gradient-to-r from-goldLuxury to-amber-500 text-black font-bold text-xs rounded-xl shadow-lg hover:scale-[1.01] transition-transform uppercase tracking-wider">
                         Abrir Cápsula Especial ✨
                     </button>
 
+                    <!-- MENSAJE DE ERROR -->
+                    <p id="lock-error" class="hidden text-xs text-rose-400 font-bold animate-bounce pt-1">
+                        ❌ Fecha incorrecta. ¡Pista: Recuerda un día inolvidable de Agosto de 2026!
+                    </p>
+
                     <div id="unlocked-memory" class="hidden text-left space-y-3 pt-3 border-t border-goldLuxury/30">
                         <div class="p-3 bg-emerald-950/80 border border-emerald-500/40 rounded-xl text-[11px] text-emerald-200 flex items-center gap-2">
                             <i class="fas fa-check-circle text-emerald-400 text-sm"></i>
                             <span>¡30 de Agosto de 2026! Un momento único e inolvidable. ❤️</span>
                         </div>
-                        <!-- CONTENEDOR ESTILO TIKTOK VERTICAL FULL (9:16) -->
                         <div class="relative w-full max-w-[280px] mx-auto aspect-[9/16] rounded-2xl overflow-hidden border border-goldLuxury/40 shadow-2xl bg-black">
                             <video controls class="w-full h-full object-cover">
                                 <source src="video_cometas.mp4" type="video/mp4">
@@ -489,7 +530,7 @@
                 </div>
 
                 <div class="space-y-4">
-                    <!-- VIDEO GOLDEN MEMORIES (FORMATO VERTICAL TIKTOK FULL 9:16) -->
+                    <!-- VIDEO GOLDEN MEMORIES -->
                     <div class="glass-luxury rounded-3xl p-4 border border-goldLuxury/30 space-y-2 text-center">
                         <p class="font-luxury text-sm font-bold gold-gradient-text uppercase tracking-widest mb-2">
                             ✨ Golden Memories ✨
@@ -722,6 +763,27 @@
 
     <!-- SCRIPT CONTROLADOR Y LÓGICA -->
     <script>
+        /* -------------------------------------------------------------
+           LÓGICA DEL CANDADO / CÁPSULA (VALIDACIÓN DE FECHA)
+        ------------------------------------------------------------- */
+        function unlockMemory() {
+            const day = document.getElementById('lock-day').value;
+            const month = document.getElementById('lock-month').value;
+            const year = document.getElementById('lock-year').value;
+            const errorMsg = document.getElementById('lock-error');
+
+            // Solo abre con 30 de Agosto de 2026
+            if ((day === '30' || day === '30') && month === 'Agosto' && year === '2026') {
+                document.getElementById('lock-inputs').style.display = 'none';
+                errorMsg.classList.add('hidden');
+                document.getElementById('unlocked-memory').classList.remove('hidden');
+                document.getElementById('padlock-icon').className = 'fas fa-unlock text-lg text-emerald-400';
+                triggerBloom();
+            } else {
+                errorMsg.classList.remove('hidden');
+            }
+        }
+
         /* -------------------------------------------------------------
            LÓGICA DEL JUEGO CONSTELACIÓN MÁGICA
         ------------------------------------------------------------- */
@@ -1103,7 +1165,7 @@
         }
 
         /* -------------------------------------------------------------
-           ESTRELLAS Y CANDADO
+           ESTRELLAS
         ------------------------------------------------------------- */
         const starQuotes = [
             "Yasmin, eres el destello de luz que ilumina todo a su paso. ✨",
@@ -1115,13 +1177,6 @@
 
         function revealStarQuote(index) {
             document.getElementById('star-quote-text').textContent = starQuotes[index];
-            triggerBloom();
-        }
-
-        function unlockMemory() {
-            document.getElementById('lock-inputs').style.display = 'none';
-            document.getElementById('unlocked-memory').classList.remove('hidden');
-            document.getElementById('padlock-icon').className = 'fas fa-unlock text-lg text-emerald-400';
             triggerBloom();
         }
 
